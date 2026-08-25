@@ -36,7 +36,7 @@ const App = () => {
             <p className=" text-gray-700">${product.price}</p>
             <button
               onClick={() => addToCart(product)}
-              className=" bg-green-500  text-white rounded px-4 py-2 mt-2"
+              className=" bg-green-500  text-white rounded px-4 py-2 mt-2 cursor-pointer"
             >
               Add to cart
             </button>
