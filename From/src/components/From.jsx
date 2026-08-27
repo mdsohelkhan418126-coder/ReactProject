@@ -1,16 +1,31 @@
 import { useState } from 'react';
 
 export const From = () => {
-  const [name, SetName] = useState();
-  const [email, SetEmail] = useState();
-  const [meassage, SetMessage] = useState();
+  const [name, SetName] = useState('');
+  const [email, SetEmail] = useState('');
+  const [meassage, SetMessage] = useState('');
+  const [errors, setErrors] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert(`Hi ${name}! from submit sussfull`);
-    SetName('');
-    SetEmail('');
-    SetMessage('');
+    if (validateForm()) {
+      alert(`Hi ${name}!  Form submitted successfully`);
+      SetName('');
+      SetEmail('');
+      SetMessage('');
+      setErrors({});
+    }
+  };
+
+  // check vilidation
+  const validateForm = () => {
+    const newErrors = {};
+    if (!name.trim()) newErrors.name = 'Name is reqired!';
+    if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email))
+      newErrors.email = 'Email is reqired!';
+    if (!meassage.trim()) newErrors.meassage = 'Message is reqired!';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
   return (
     <form
@@ -29,6 +44,10 @@ export const From = () => {
           placeholder="Enter your name"
           className=" border p-2 md: w-64 h-full"
         />
+
+        {errors.name && (
+          <p className=" text-red-600 text-sm italic">{errors.name}</p>
+        )}
       </div>
       {/* Email */}
       <div>
@@ -42,6 +61,10 @@ export const From = () => {
           placeholder="Enter your Email"
           className=" border p-2 md: w-64 h-full"
         />
+
+        {errors.email && (
+          <p className=" text-red-600 text-sm italic">{errors.email}</p>
+        )}
       </div>
       {/* meassage */}
       <div>
@@ -55,6 +78,10 @@ export const From = () => {
           placeholder="Type your message here"
           className=" border p-2 md: w-64 h-full"
         ></textarea>
+
+        {errors.meassage && (
+          <p className=" text-red-600 text-sm italic">{errors.meassage}</p>
+        )}
       </div>
       <button type="submit" className=" bg-blue-500 rounded px-4 py-2">
         Submit
