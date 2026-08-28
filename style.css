@@ -1,0 +1,29 @@
+.test {
+  background-color: aqua;
+  color: white;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .test {
+    background-color: rgb(19, 1, 26);
+    color: rgb(91, 7, 7);
+    width: 500px;
+    height: 200px;
+    border-radius: 20px;
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  .test {
+    background-color: rgb(19, 171, 24);
+    color: rgb(61, 7, 239);
+    width: 500px;
+    height: 200px;
+    border-radius: 20px;
+    text-align: center;
+  }
+}
