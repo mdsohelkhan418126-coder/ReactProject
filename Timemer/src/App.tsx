@@ -1,10 +1,15 @@
-import { Timemer } from "./components/Timemer"
+// import { Timemer } from "./components/Timemer"
+
+
+import { Datafecing } from "./components/Datafecing"
 
 
  const App = () => {
   return (
     <div >
-    <Timemer/>
+      {/* <Timemer/> */}
+      <Datafecing />
+     
     </div>
   )
 }
